@@ -18,7 +18,7 @@ class Cadabra2 < Formula
   depends_on "adwaita-icon-theme"
 
   def install
-    system "cmake", ".", *std_cmake_args
+    system "cmake", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     system "make", "install" # if this fails, try separate make/make install steps
   end
 

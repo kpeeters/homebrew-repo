@@ -15,6 +15,8 @@ class Cadabra2 < Formula
   depends_on "gmp"
   depends_on "python3"
   depends_on "gtkmm3"
+  depends_on "mpfr"
+  depends_on "libmpc"
   depends_on "adwaita-icon-theme"
 
   def install

@@ -4,8 +4,8 @@
 class Cadabra2 < Formula
   desc "A field-theory motivated approach to computer algebra."
   homepage "https://cadabra.science/"
-  url "https://github.com/kpeeters/cadabra2/releases/download/2.3.6.1/cadabra2-2.3.6.1.tar.gz"
-  sha256 "eafc6b409431f4e32b19397e77fe37d1176004f2843cff2a019e24af04322405"
+  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.3.8.tar.gz"
+  sha256 "4bd1b3d72dd94c7a79ee23576e9fbbc115a11addc8e252934ea10208641f6e48"
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
 #  depends_on :mactex
@@ -15,17 +15,17 @@ class Cadabra2 < Formula
   depends_on "gmp"
   depends_on "python3"
   depends_on "gtkmm3"
-  depends_on "glibmm@2.64"
-  depends_on "atkmm@2.28"
-  depends_on "cairomm@1.14"
-  depends_on "pangomm@2.42"
+  depends_on "glibmm@2.70.0"
+  depends_on "atkmm@2.36.1"
+  depends_on "cairomm@1.16,.1"
+  depends_on "pangomm@2.48.1"
   depends_on "mpfr"
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
 
   resource "sympy" do
-     url    "https://files.pythonhosted.org/packages/23/03/942707321b066654102fae3c640eda8b9e238c05b7f3b8d0557f287ab42e/sympy-1.6.tar.gz"
-     sha256 "9769e3d2952e211b1245f1d0dfdbfbdde1f7779a3953832b7dd2b88a21ca6cc6"
+     url    "https://files.pythonhosted.org/packages/26/86/902ee78db1bab1f0410f799869a49bb03b83be8d44c23b224d9db34f21c3/sympy-1.9.tar.gz"
+     sha256 "c7a880e229df96759f955d4f3970d4cabce79f60f5b18830c08b90ce77cd5fdc"
   end
 
   resource "gmpy2" do

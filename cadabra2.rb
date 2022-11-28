@@ -4,8 +4,8 @@
 class Cadabra2 < Formula
   desc "A field-theory motivated approach to computer algebra."
   homepage "https://cadabra.science/"
-  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.4.2.3.tar.gz"
-  sha256 "7ed4c3353fd46acf1429c5f619949f6a46fdc7cff770111fdc9dd07c454b3069"
+  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.4.2.4.tar.gz"
+  sha256 "0624772a95015a29a3eb3d71328b3ac2aeac9612150402629d00e5babf95a9f9"
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
 #  depends_on :mactex

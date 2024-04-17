@@ -13,7 +13,7 @@ class Cadabra2 < Formula
   depends_on "boost"
   depends_on "pcre"
   depends_on "gmp"
-  depends_on "python3"
+  depends_on "python@3.12"
   depends_on "gtkmm3"
   depends_on "glibmm"
   depends_on "atkmm"

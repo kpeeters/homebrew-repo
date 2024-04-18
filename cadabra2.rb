@@ -4,8 +4,8 @@
 class Cadabra2 < Formula
   desc "A field-theory motivated approach to computer algebra."
   homepage "https://cadabra.science/"
-  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.4.5.5.tar.gz"
-  sha256 "3311028b3b35a4bdc1460ec6a834e6d40317c4f94c5d7211df4ebf8ddc896889"
+  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.4.5.6.tar.gz"
+  sha256 "9a3ebe3debd6efdd5f20a3c78acc2ef8933135d5f43da39b6ea107be94a9413c"
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
 #  depends_on :mactex
@@ -34,7 +34,7 @@ class Cadabra2 < Formula
   end
 
   def install
-    system "cmake", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    system "cmake", "-DPYTHON_SITE_PATH="+Language::Python.site_packages(python3), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     system "make", "install" # if this fails, try separate make/make install steps
   end
 

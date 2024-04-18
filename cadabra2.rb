@@ -34,7 +34,7 @@ class Cadabra2 < Formula
   end
 
   def install
-    system "cmake", "-DPYTHON_SITE_PATH="+Language::Python.site_packages(python3), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    system "cmake", "-DPYTHON_SITE_PATH="+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     system "make", "install" # if this fails, try separate make/make install steps
   end
 

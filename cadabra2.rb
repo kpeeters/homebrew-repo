@@ -42,6 +42,7 @@ class Cadabra2 < Formula
   def install
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     venv = virtualenv_create(libexec)
+    venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
     # We would like libexec to be in sys.path, but the construction below

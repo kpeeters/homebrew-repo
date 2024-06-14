@@ -31,7 +31,7 @@ class Cadabra2 < Formula
 
   resource "gmpy2" do
      url    "https://files.pythonhosted.org/packages/d9/2e/2848cb5ab5240cb34b967602990450d0fd715f013806929b2f82821cef7f/gmpy2-2.1.5.tar.gz"
-     sha256 "03beaccf3843c9e9d9cf70102a74cd1e617e792337b64ae73a417b80bf96b385"
+     sha256 "bc297f1fd8c377ae67a4f493fc0f926e5d1b157e5c342e30a4d84dc7b9f95d96"
   end
 
   def install

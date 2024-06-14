@@ -25,13 +25,13 @@ class Cadabra2 < Formula
   depends_on "adwaita-icon-theme"
 
   resource "sympy" do
-    url    "https://files.pythonhosted.org/packages/5a/36/4667b08bc45131fe655a27b1a112c1730f3244343c53a338f44d730bd6ba/sympy-1.11.1.tar.gz"
-    sha256 "e32380dce63cb7c0108ed525570092fd45168bdae2faa17e528221ef72e88658"
+    url    "https://files.pythonhosted.org/packages/41/8a/0d1bbd33cd3091c913d298746e56f40586fa954788f51b816c6336424675/sympy-1.12.1.tar.gz"
+    sha256 "2877b03f998cd8c08f07cd0de5b767119cd3ef40d09f41c30d722f6686b0fb88"
   end
 
   resource "gmpy2" do
-     url    "https://files.pythonhosted.org/packages/80/02/a9f4de927fc1677a68b40d966f9ea757b58997cfe06cf305ffa2159979ce/gmpy2-2.1.2.tar.gz"
-     sha256 "da75140bca128ece795895477e53b43773e3748aa90ba6170eae7ca2c74b82d1"
+     url    "https://files.pythonhosted.org/packages/d9/2e/2848cb5ab5240cb34b967602990450d0fd715f013806929b2f82821cef7f/gmpy2-2.1.5.tar.gz"
+     sha256 "03beaccf3843c9e9d9cf70102a74cd1e617e792337b64ae73a417b80bf96b385"
   end
 
   def install

@@ -2,6 +2,8 @@
 # https://cadabra.science/
 
 class Cadabra2 < Formula
+  include Language::Python::Virtualenv
+  
   desc "A field-theory motivated approach to computer algebra."
   homepage "https://cadabra.science/"
   url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.5.2.tar.gz"
@@ -34,6 +36,7 @@ class Cadabra2 < Formula
 
   def install
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    virtualenv_install_with_resources
     system "make", "install" # if this fails, try separate make/make install steps
   end
 

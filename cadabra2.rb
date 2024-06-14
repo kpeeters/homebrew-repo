@@ -24,6 +24,11 @@ class Cadabra2 < Formula
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
 
+  resource "mpmath" do
+    url    "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz"
+    sha256 "7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f"
+  end
+  
   resource "sympy" do
     url    "https://files.pythonhosted.org/packages/41/8a/0d1bbd33cd3091c913d298746e56f40586fa954788f51b816c6336424675/sympy-1.12.1.tar.gz"
     sha256 "2877b03f998cd8c08f07cd0de5b767119cd3ef40d09f41c30d722f6686b0fb88"
@@ -39,6 +44,8 @@ class Cadabra2 < Formula
     venv = virtualenv_create(libexec)
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
+    # We would like libexec to be in sys.path, but the construction below
+    # does not work...
     site_packages = Language::Python.site_packages("python3.12")
     cdb = Formula["cadabra2"].libexec
     (libexec/"lib/python3.12/site-packages/homebrew-cadabra2.pth").write cdb/site_packages

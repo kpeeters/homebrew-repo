@@ -38,8 +38,9 @@ class Cadabra2 < Formula
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     venv = virtualenv_create(libexec)
     venv.pip_install resource("sympy")
-    venv.pip_install resource("gmpy2")    
-#    venv.pip_install_and_link buildpath
+    venv.pip_install resource("gmpy2")
+    (libexec/"lib/python3.12/site-packages/deps.pth").write "import site; site.addsitedir('#{Formula["sympy"].lib/"python3.12/site-packages"}')\n"
+    (libexec/"lib/python3.12/site-packages/deps.pth").write "import site; site.addsitedir('#{Formula["gmpy2"].lib/"python3.12/site-packages"}')\n"
     system "make", "install" 
   end
 

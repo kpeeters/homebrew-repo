@@ -36,8 +36,11 @@ class Cadabra2 < Formula
 
   def install
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
-    virtualenv_install_with_resources
-    system "make", "install" # if this fails, try separate make/make install steps
+    venv = virtualenv_create(libexec)
+    venv.pip_install resource(sympy)
+    venv.pip_install resource(gmpy2)    
+    venv.pip_install_and_link buildpath
+    system "make", "install" 
   end
 
   test do

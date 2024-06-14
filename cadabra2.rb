@@ -39,7 +39,7 @@ class Cadabra2 < Formula
     venv = virtualenv_create(libexec)
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
-    (libexec/"lib/python3.12/site-packages/deps.pth").write "import site; site.addsitedir('"libexec/"python3.12/site-packages')\n"
+    (libexec/"lib/python3.12/site-packages/deps.pth").write "import site; site.addsitedir('#{libexec}/python3.12/site-packages')\n"
     system "make", "install" 
   end
 

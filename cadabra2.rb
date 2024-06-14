@@ -39,7 +39,7 @@ class Cadabra2 < Formula
     venv = virtualenv_create(libexec)
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")    
-    venv.pip_install_and_link buildpath
+#    venv.pip_install_and_link buildpath
     system "make", "install" 
   end
 

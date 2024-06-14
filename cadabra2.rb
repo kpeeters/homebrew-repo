@@ -39,7 +39,7 @@ class Cadabra2 < Formula
     venv = virtualenv_create(libexec)
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
-    site_packages = Language::Python.site_packages(python3)
+    site_packages = Language::Python.site_packages("python3.12")
     cdb = Formula["cadabra2"].opt_libexec
     (libexec/"lib/python3.12/site-packages/homebrew-cadabra2.pth").write cdb/site_packages
     system "make", "install" 

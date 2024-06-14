@@ -30,8 +30,8 @@ class Cadabra2 < Formula
   end
 
   resource "gmpy2" do
-     url    "https://files.pythonhosted.org/packages/d9/2e/2848cb5ab5240cb34b967602990450d0fd715f013806929b2f82821cef7f/gmpy2-2.1.5.tar.gz"
-     sha256 "bc297f1fd8c377ae67a4f493fc0f926e5d1b157e5c342e30a4d84dc7b9f95d96"
+     url    "https://github.com/kpeeters/homebrew-repo/raw/master/gmpy2-2.1.5-patched.tar.gz"
+     sha256 "87c69a6a7974d963f9fbf439ca756fe8e74ce00f2c23a43795f51e3cc8282693"
   end
 
   def install

@@ -35,10 +35,16 @@ class Cadabra2 < Formula
   end
 
   resource "gmpy2" do
-     url    "https://github.com/kpeeters/homebrew-repo/raw/master/gmpy2-2.1.5-patched.tar.gz"
-     sha256 "87c69a6a7974d963f9fbf439ca756fe8e74ce00f2c23a43795f51e3cc8282693"
+    url "https://files.pythonhosted.org/packages/d9/2e/2848cb5ab5240cb34b967602990450d0fd715f013806929b2f82821cef7f/gmpy2-2.1.5.tar.gz"
+    sha256 "bc297f1fd8c377ae67a4f493fc0f926e5d1b157e5c342e30a4d84dc7b9f95d96"
+    
+    # upstream bug report, https://github.com/aleaxit/gmpy/issues/446
+    patch do
+      url "https://raw.githubusercontent.com/Homebrew/formula-patches/d77631527c866bbd168f7add6814e3388033cf2f/badkeys/gmpy2-2.1.5-py3.12.patch"
+      sha256 "6b0994285919e373d2e91b3e0662c7775f03a194a116b5170fdc41837dd3551e"
+    end
   end
-
+  
   def install
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     venv = virtualenv_create(libexec)
@@ -49,7 +55,8 @@ class Cadabra2 < Formula
     # does not work...
     site_packages = Language::Python.site_packages("python3.12")
     cdb = Formula["cadabra2"].libexec
-    (libexec/"lib/python3.12/site-packages/homebrew-cadabra2.pth").write cdb/site_packages
+    (prefix/site_packages/"homebrew-cadabra2.pth").write cdb/site_packages
+    # (libexec/"lib/python3.12/site-packages/homebrew-cadabra2.pth").write cdb/site_packages
     system "make", "install" 
   end
 

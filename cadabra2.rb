@@ -46,17 +46,21 @@ class Cadabra2 < Formula
   end
   
   def install
+    # Configure cadabra.
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    # Install the python dependencies using pip into a virtual env
+    # created just for cadabra.
     venv = virtualenv_create(libexec)
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
-    # We would like libexec to be in sys.path, but the construction below
-    # does not work...
+    # We need to put the directory in which we just installed sympy
+    # and matplotlib into the python site.path seen by cadabra. The
+    # following magic achieves that...
     site_packages = Language::Python.site_packages("python3.12")
     cdb = Formula["cadabra2"].libexec
     (prefix/site_packages/"homebrew-cadabra2.pth").write cdb/site_packages
-    # (libexec/"lib/python3.12/site-packages/homebrew-cadabra2.pth").write cdb/site_packages
+    # Now build and install cadabra itself.
     system "make", "install" 
   end
 

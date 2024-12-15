@@ -1,7 +1,7 @@
 # Formula for the Cadabra computer algebra system.
 # https://cadabra.science/
 
-class Cadabra2_devel < Formula
+class Cadabra2Devel < Formula
   include Language::Python::Virtualenv
   
   desc "A field-theory motivated approach to computer algebra (current development branch)."

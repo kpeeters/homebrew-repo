@@ -49,7 +49,7 @@ class Cadabra2Devel < Formula
   
   def install
     # Configure cadabra.
-    system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     # Install the python dependencies using pip into a virtual env
     # created just for cadabra.
     venv = virtualenv_create(libexec)

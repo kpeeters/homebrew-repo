@@ -8,8 +8,9 @@ class Cadabra2 < Formula
   homepage "https://cadabra.science/"
   url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.5.8.tar.gz"
   sha256 "2423db4bc254ff435ab620edeea4fd2a21e82e65219e2751996637ce89fb31b2"
-  conflicts_with "cadabra2-devel", because: "you can only install the normal or the devel version, not both"
-
+  conflicts_with "cadabra2-devel", because: "You can only install the normal or the devel version, not both."
+  version "2.5.8"
+  
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
   depends_on "sqlite3"

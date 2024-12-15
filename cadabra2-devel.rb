@@ -1,14 +1,14 @@
 # Formula for the Cadabra computer algebra system.
 # https://cadabra.science/
 
-class Cadabra2 < Formula
+class Cadabra2_devel < Formula
   include Language::Python::Virtualenv
   
-  desc "A field-theory motivated approach to computer algebra."
+  desc "A field-theory motivated approach to computer algebra (current development branch)."
   homepage "https://cadabra.science/"
   url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.5.6.tar.gz"
   sha256 "0d5b5442cf3469be3b7b17962f1499f646abb7168df590c7443d43133c277c0c"
-  conflicts_with "cadabra2-devel", because: "you can only install the normal or the devel version, not both"
+  conflicts_with "cadabra2", because: "you can only install the normal or the devel version, not both"
 
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
@@ -60,8 +60,8 @@ class Cadabra2 < Formula
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...
     site_packages = Language::Python.site_packages("python3.12")
-    cdb = Formula["cadabra2"].libexec
-    (prefix/site_packages/"homebrew-cadabra2.pth").write cdb/site_packages
+    cdb = Formula["cadabra2-devel"].libexec
+    (prefix/site_packages/"homebrew-cadabra2-devel.pth").write cdb/site_packages
     # Now build and install cadabra itself.
     system "make", "install" 
   end

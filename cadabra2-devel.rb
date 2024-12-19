@@ -53,7 +53,7 @@ class Cadabra2Devel < Formula
     system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     # Install the python dependencies using pip into a virtual env
     # created just for cadabra.
-    venv = virtualenv_create(libexec, Formula["python@3.12"].opt_bin/"python3")
+    venv = virtualenv_create(libexec, Formula["python@3.12"].opt_bin/"python3.12")
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")

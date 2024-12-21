@@ -57,6 +57,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
+    venv.pip_install resource("matplotlib")
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...

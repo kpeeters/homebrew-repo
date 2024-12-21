@@ -50,19 +50,20 @@ class Cadabra2 < Formula
   
   def install
     # Configure cadabra.
-    system "cmake", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     # Install the python dependencies using pip into a virtual env
     # created just for cadabra.
-    venv = virtualenv_create(libexec)
+    venv = virtualenv_create(libexec, Formula["python@3.12"].opt_bin/"python3.12")
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
+    venv.pip_install resource("matplotlib")
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...
     site_packages = Language::Python.site_packages("python3.12")
-    cdb = Formula["cadabra2"].libexec
-    (prefix/site_packages/"homebrew-cadabra2.pth").write cdb/site_packages
+    cdb = Formula["cadabra2-devel"].libexec
+    (prefix/site_packages/"homebrew-cadabra2-devel.pth").write cdb/site_packages
     # Now build and install cadabra itself.
     system "make", "install" 
   end

@@ -17,7 +17,7 @@ class Cadabra2Devel < Formula
   depends_on "boost"
   depends_on "pcre"
   depends_on "gmp"
-  depends_on "python@3.13"
+  depends_on "python@3.12"
   depends_on "gtkmm3"
   depends_on "glibmm"
   depends_on "atkmm"
@@ -51,17 +51,17 @@ class Cadabra2Devel < Formula
   
   def install
     # Configure cadabra.
-    system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.13"].opt_bin/"python3.13", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.13"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     # Install the python dependencies using pip into a virtual env
     # created just for cadabra.
-    venv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
+    venv = virtualenv_create(libexec, Formula["python@3.12"].opt_bin/"python3.12")
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...
-    site_packages = Language::Python.site_packages("python3.13")
+    site_packages = Language::Python.site_packages("python3.12")
     cdb = Formula["cadabra2-devel"].libexec
     (prefix/site_packages/"homebrew-cadabra2-devel.pth").write cdb/site_packages
     # Now build and install cadabra itself.

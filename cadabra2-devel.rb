@@ -6,10 +6,10 @@ class Cadabra2Devel < Formula
   
   desc "A field-theory motivated approach to computer algebra (current development branch)."
   homepage "https://cadabra.science/"
-  url "https://github.com/kpeeters/cadabra2/archive/9e7cf52846c3140e8e305d2bd7012b64baed3fb2.tar.gz"
-  sha256 "bd2c97e46b010c2ebcbba6c757cce3eefec536d65922529fc33b36f850142196"
+  url "https://github.com/kpeeters/cadabra2/archive/a6bf3d38d3eb8896b68f52ff6282a9711a92688c.tar.gz"
+  sha256 "2e7e979d66a6fbd9e3bbae15619b4b27c408e7873b071122ec3abe434944b655"
   conflicts_with "cadabra2", because: "You can only install the normal or the devel version, not both."
-  version "2.5.10-rc3.9e7cf52846c3140e8e305d2bd7012b64baed3fb2"
+  version "2.5.10-rc3.a6bf3d38d3eb8896b68f52ff6282a9711a92688c"
   
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
@@ -80,8 +80,8 @@ class Cadabra2Devel < Formula
   end
   
   resource "kiwisolver" do
-  url "https://files.pythonhosted.org/packages/85/4d/2255e1c76304cbd60b48cee302b66d1dde4468dc5b1160e4b7cb43778f2a/kiwisolver-1.4.7.tar.gz"
-  sha256 "9893ff81bd7107f7b685d3017cc6583daadb4fc26e4a888350df530e41980a60"
+  url "https://github.com/kpeeters/cadabra2/archive/a6bf3d38d3eb8896b68f52ff6282a9711a92688c.tar.gz"
+  sha256 "2e7e979d66a6fbd9e3bbae15619b4b27c408e7873b071122ec3abe434944b655"
   end
   
   resource "numpy" do

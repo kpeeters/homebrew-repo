@@ -82,7 +82,7 @@ class Cadabra2Devel < Formula
   
   resource "kiwisolver" do
   url "https://files.pythonhosted.org/packages/85/4d/2255e1c76304cbd60b48cee302b66d1dde4468dc5b1160e4b7cb43778f2a/kiwisolver-1.4.7.tar.gz"
-  sha256 "2e7e979d66a6fbd9e3bbae15619b4b27c408e7873b071122ec3abe434944b655"
+  sha256 "9893ff81bd7107f7b685d3017cc6583daadb4fc26e4a888350df530e41980a60"
   end
   
   resource "numpy" do

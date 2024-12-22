@@ -48,6 +48,11 @@ class Cadabra2 < Formula
     end
   end
   
+  resource "matplotlib" do
+    url "https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-3.8.3.tar.gz"
+    sha256 "7b416239e9ae38be54b028abbf9048aff5054a9aba5416bef0bd17f9162ce161"
+  end
+  
   def install
     # Configure cadabra.
     system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args

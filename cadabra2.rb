@@ -26,6 +26,7 @@ class Cadabra2 < Formula
   depends_on "mpfr"
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
+  depends_on "matplotlib" => :python3
 
   resource "mpmath" do
     url    "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz"
@@ -62,7 +63,6 @@ class Cadabra2 < Formula
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
-    venv.pip_install resource("matplotlib")
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...

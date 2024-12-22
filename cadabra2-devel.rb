@@ -26,7 +26,8 @@ class Cadabra2Devel < Formula
   depends_on "mpfr"
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
-
+  depends_on "matplotlib" => :python3
+  
   resource "mpmath" do
     url    "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz"
     sha256 "7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f"
@@ -48,11 +49,6 @@ class Cadabra2Devel < Formula
     end
   end
   
-  resource "matplotlib" do
-    url "https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-3.8.3.tar.gz"
-    sha256 "7b416239e9ae38be54b028abbf9048aff5054a9aba5416bef0bd17f9162ce161"
-  end
-  
   def install
     # Configure cadabra.
     system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
@@ -62,7 +58,6 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
-    venv.pip_install resource("matplotlib")
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...

@@ -49,6 +49,11 @@ class Cadabra2Devel < Formula
   end
 
   # Dependencies with no sub-dependencies should go first
+  resource "six" do
+    url "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz"
+    sha256 "ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"
+  end
+  
   resource "packaging" do
     url "https://files.pythonhosted.org/packages/d0/63/68dbb6eb2de9cb10ee4c9c14a0148804425e13c4fb20d61cce69f53106da/packaging-24.2.tar.gz"
     sha256 "c228a6dc5e932d346bc5739379109d49e8853dd8223571c7c5b55260edc0b97f"
@@ -111,6 +116,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("gmpy2")
 
     # Matplotlib an dependencies.
+    venv.pip_install resource("six")
     venv.pip_install resource("packaging")
     venv.pip_install resource("python-dateutil")
     venv.pip_install resource("pillow")

@@ -26,7 +26,7 @@ class Cadabra2 < Formula
   depends_on "mpfr"
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
-  depends_on "matplotlib" => :python3
+  depends_on "python-matplotlib"
 
   resource "mpmath" do
     url    "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz"
@@ -47,11 +47,6 @@ class Cadabra2 < Formula
       url "https://raw.githubusercontent.com/Homebrew/formula-patches/d77631527c866bbd168f7add6814e3388033cf2f/badkeys/gmpy2-2.1.5-py3.12.patch"
       sha256 "6b0994285919e373d2e91b3e0662c7775f03a194a116b5170fdc41837dd3551e"
     end
-  end
-  
-  resource "matplotlib" do
-    url "https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-3.8.3.tar.gz"
-    sha256 "7b416239e9ae38be54b028abbf9048aff5054a9aba5416bef0bd17f9162ce161"
   end
   
   def install

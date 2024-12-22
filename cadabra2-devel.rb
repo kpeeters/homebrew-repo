@@ -13,6 +13,7 @@ class Cadabra2Devel < Formula
   
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build
+  depends_on "ninja" => :build
   depends_on "sqlite3"
   depends_on "boost"
   depends_on "pcre"
@@ -80,7 +81,7 @@ class Cadabra2Devel < Formula
   end
   
   resource "kiwisolver" do
-  url "https://github.com/kpeeters/cadabra2/archive/a6bf3d38d3eb8896b68f52ff6282a9711a92688c.tar.gz"
+  url "https://files.pythonhosted.org/packages/85/4d/2255e1c76304cbd60b48cee302b66d1dde4468dc5b1160e4b7cb43778f2a/kiwisolver-1.4.7.tar.gz"
   sha256 "2e7e979d66a6fbd9e3bbae15619b4b27c408e7873b071122ec3abe434944b655"
   end
   

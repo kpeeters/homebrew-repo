@@ -81,8 +81,8 @@ class Cadabra2Devel < Formula
   end
   
   resource "kiwisolver" do
-  url "https://github.com/kpeeters/cadabra2/archive/277ef7f4abe6806ece6b01d5b63f851640ef0835.tar.gz"
-  sha256 "15e3325def96499523666a1eac564e0e73008dffccbe55525b023fae994386c8"
+  url "https://files.pythonhosted.org/packages/85/4d/2255e1c76304cbd60b48cee302b66d1dde4468dc5b1160e4b7cb43778f2a/kiwisolver-1.4.7.tar.gz"
+  sha256 "9893ff81bd7107f7b685d3017cc6583daadb4fc26e4a888350df530e41980a60"
   end
   
   resource "numpy" do

@@ -133,8 +133,8 @@ class Cadabra2 < Formula
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...
     site_packages = Language::Python.site_packages("python3.12")
-    cdb = Formula["cadabra2-devel"].libexec
-    (prefix/site_packages/"homebrew-cadabra2-devel.pth").write cdb/site_packages
+    cdb = Formula["cadabra2"].libexec
+    (prefix/site_packages/"homebrew-cadabra2.pth").write cdb/site_packages
     # Now build and install cadabra itself.
     system "make", "install" 
   end

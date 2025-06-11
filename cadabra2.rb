@@ -105,7 +105,12 @@ class Cadabra2 < Formula
     sha256 "b886d02a581b96704c9d1ffe55709e49b4d2d52709ccebc4be42db856e511278"
   end
 
+  resource "ipykernel" do
+    url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
+    sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
+  end
 
+  
   def install
     # Configure cadabra.
     system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPython_CDB_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args

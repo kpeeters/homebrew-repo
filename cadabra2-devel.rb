@@ -27,6 +27,8 @@ class Cadabra2Devel < Formula
   depends_on "mpfr"
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
+
+  # Get these resource urls and sha256 from https://pypi.org.
   
   resource "mpmath" do
     url    "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz"
@@ -103,6 +105,11 @@ class Cadabra2Devel < Formula
   resource "matplotlib" do
     url    "https://files.pythonhosted.org/packages/68/dd/fa2e1a45fce2d09f4aea3cee169760e672c8262325aa5796c49d543dc7e6/matplotlib-3.10.0.tar.gz"
     sha256 "b886d02a581b96704c9d1ffe55709e49b4d2d52709ccebc4be42db856e511278"
+  end
+
+  resource "ipykernel" do
+    url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
+    sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
   end
 
   

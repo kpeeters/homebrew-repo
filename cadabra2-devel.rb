@@ -128,6 +128,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("pyparsing")
     venv.pip_install resource("cycler")
     venv.pip_install resource("matplotlib")
+    venv.pip_install resource("ipykernel")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
@@ -137,6 +138,18 @@ class Cadabra2Devel < Formula
     (prefix/site_packages/"homebrew-cadabra2-devel.pth").write cdb/site_packages
     # Now build and install cadabra itself.
     system "make", "install" 
+
+    # If jupyter or jupyterlab is already installed, copy our kernel spec into a
+    # location where it looks.
+    if Formula["jupyterlab"].any_version_installed?
+      jupyter_path = Formula["jupyterlab"].opt_libexec/"share/jupyter/kernels"
+      (jupyter_path/"cadabra2").install "../jupyterkernel/kernelspec/kernel.json", "../jupyterkernel/kernelspec/logo-64x64.png"
+    end
+  
+    if Formula["jupyter"].any_version_installed?
+      jupyter_path = Formula["jupyter"].opt_libexec/"share/jupyter/kernels"  
+      (jupyter_path/"cadabra2").install "../jupyterkernel/kernelspec/kernel.json", "../jupyterkernel/kernelspec/logo-64x64.png"
+    end
   end
 
   test do

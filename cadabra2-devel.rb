@@ -173,7 +173,7 @@ class Cadabra2Devel < Formula
     if Formula["jupyterlab"].any_version_installed?
       # Install the kernel to user directory using jupyter's own mechanism
       system "jupyter", "kernelspec", "install", 
-             prefix/"share/jupyter/cadabra2", 
+             prefix/"share/jupyter/kernels/cadabra2", 
              "--user", 
              "--name", "cadabra2"
     end

@@ -344,6 +344,7 @@ end
     # venv.pip_install resource("platformdirs")
     # venv.pip_install resource("IPython")
 
+    vinv.pip_install resource("pyzmq")
     vinv.pip_install resource("asttokens")
     vinv.pip_install resource("comm")
     vinv.pip_install resource("debugpy")
@@ -365,7 +366,6 @@ end
     vinv.pip_install resource("ptyprocess")
     vinv.pip_install resource("pure_eval")
     vinv.pip_install resource("Pygments")
-    vinv.pip_install resource("pyzmq")
     vinv.pip_install resource("stack-data")
     vinv.pip_install resource("tornado")
     vinv.pip_install resource("traitlets")

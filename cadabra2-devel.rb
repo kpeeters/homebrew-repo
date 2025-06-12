@@ -27,6 +27,7 @@ class Cadabra2Devel < Formula
   depends_on "mpfr"
   depends_on "libmpc"
   depends_on "adwaita-icon-theme"
+  depends_on "zeromq"
 
   # Get these resource urls and sha256 from https://pypi.org.
   
@@ -107,16 +108,15 @@ class Cadabra2Devel < Formula
     sha256 "b886d02a581b96704c9d1ffe55709e49b4d2d52709ccebc4be42db856e511278"
   end
 
-#   resource "pyzmq" do
-#     url    "https://files.pythonhosted.org/packages/b1/11/b9213d25230ac18a71b39b3723494e57adebe36e066397b961657b3b41c1/pyzmq-26.4.0.tar.gz"
-#     sha256 "4bd13f85f80962f91a651a7356fe0472791a5f7a92f227822b5acf44795c626d"
-#   end
-# 
-#   resource "ipykernel" do
-#     url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
-#     sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
-#   end
+  resource "pyzmq" do
+    url    "https://files.pythonhosted.org/packages/b1/11/b9213d25230ac18a71b39b3723494e57adebe36e066397b961657b3b41c1/pyzmq-26.4.0.tar.gz"
+    sha256 "4bd13f85f80962f91a651a7356fe0472791a5f7a92f227822b5acf44795c626d"
+  end
 
+  resource "ipykernel" do
+    url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
+    sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
+  end
   
   def install
     # Configure cadabra.
@@ -140,8 +140,8 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("pyparsing")
     venv.pip_install resource("cycler")
     venv.pip_install resource("matplotlib")
-#    venv.pip_install resource("pyzmq")
-#    venv.pip_install resource("ipykernel")
+    venv.pip_install resource("pyzmq")
+    venv.pip_install resource("ipykernel")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
@@ -154,18 +154,28 @@ class Cadabra2Devel < Formula
 
     # If jupyter or jupyterlab is already installed, copy our kernel spec into a
     # location where it looks.
+#    if Formula["jupyterlab"].any_version_installed?
+#      jupyter_path = Formula["jupyterlab"].opt_libexec/"share/jupyter/kernels"
+#      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/kernel.json"
+#      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-64x64.json"
+#      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-32x32.json"      
+#    end
+#  
+#    if Formula["jupyter"].any_version_installed?
+#      jupyter_path = Formula["jupyter"].opt_libexec/"share/jupyter/kernels"  
+#      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/kernel.json"
+#      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-64x64.json"
+#      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-32x32.json"      
+#    end
+  end
+
+  def post_install
     if Formula["jupyterlab"].any_version_installed?
-      jupyter_path = Formula["jupyterlab"].opt_libexec/"share/jupyter/kernels"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/kernel.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-64x64.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-32x32.json"      
-    end
-  
-    if Formula["jupyter"].any_version_installed?
-      jupyter_path = Formula["jupyter"].opt_libexec/"share/jupyter/kernels"  
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/kernel.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-64x64.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-32x32.json"      
+      # Install the kernel to user directory using jupyter's own mechanism
+      system "jupyter", "kernelspec", "install", 
+             prefix/"share/jupyter/cadabra2", 
+             "--user", 
+             "--name", "cadabra2"
     end
   end
 

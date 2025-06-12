@@ -117,7 +117,13 @@ class Cadabra2Devel < Formula
     url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
     sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
   end
-  
+
+  resource "jupyter_client" do
+    url    "https://files.pythonhosted.org/packages/71/22/bf9f12fdaeae18019a468b68952a60fe6dbab5d67cd2a103cac7659b41ca/jupyter_client-8.6.3.tar.gz"
+    sha256 "35b3a0947c4a6e9d589eb97d7d4cd5e90f910ee73101611f01283732bd6d9419"
+  end
+
+
   def install
     # Configure cadabra.
     venv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
@@ -144,6 +150,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("matplotlib")
     venv.pip_install resource("pyzmq")
     venv.pip_install resource("ipykernel")
+    venv.pip_install resource("jupyter_client")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The

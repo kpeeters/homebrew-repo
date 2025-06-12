@@ -120,10 +120,12 @@ class Cadabra2Devel < Formula
   
   def install
     # Configure cadabra.
-    system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.13"].opt_bin/"python3.13", "-DPython_CDB_EXECUTABLE="+Formula["python@3.13"].opt_bin/"python3.13", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.13"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    venv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
+
+    system "cmake", "-DPython_EXECUTABLE="+venv.root/"bin/python3.13", "-DPython_CDB_EXECUTABLE="+venv.root/"bin/python3.13", "-DPYTHON_SITE_PATH="+venv.root+"/"+Language::Python.site_packages("python3.13"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+
     # Install the python dependencies using pip into a virtual env
     # created just for cadabra.
-    venv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
@@ -169,15 +171,22 @@ class Cadabra2Devel < Formula
 #    end
   end
 
-  def post_install
-    if Formula["jupyterlab"].any_version_installed?
-      # Install the kernel to user directory using jupyter's own mechanism
-      system "jupyter", "kernelspec", "install", 
-             prefix/"share/jupyter/kernels/cadabra2", 
-             "--user", 
-             "--name", "cadabra2"
-    end
+  def caveats
+    <<~EOS
+      To make the Cadabra2 kernel available to Jupyter, run:
+        jupyter kernelspec install #{prefix}/share/jupyter/cadabra2 --user --name cadabra2
+    EOS
   end
+
+#   def post_install
+#     if Formula["jupyterlab"].any_version_installed?
+#       # Install the kernel to user directory using jupyter's own mechanism
+#       system "jupyter", "kernelspec", "install", 
+#              prefix/"share/jupyter/kernels/cadabra2", 
+#              "--user", 
+#              "--name", "cadabra2"
+#     end
+#   end
 
   test do
     # `test do` will create, run in and delete a temporary directory.

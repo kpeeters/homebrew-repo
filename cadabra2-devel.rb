@@ -138,6 +138,11 @@ class Cadabra2Devel < Formula
     sha256 "84ceece391e8eb9b2b95578db65e920d2a61070260594819589609ba9bc6308c"
   end
   
+  resource "platformdirs" do
+    url    "https://files.pythonhosted.org/packages/fe/8b/3c73abc9c759ecd3f1f7ceff6685840859e8070c4d947c93fae71f6a0bf2/platformdirs-4.3.8.tar.gz"
+    sha256 "3d512d96e16bcb959a814c9f348431070822a6496326a4be0911c40b5a74c2bc"
+  end
+  
 
   def install
     # Configure cadabra.
@@ -168,7 +173,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("jupyter_client")
     venv.pip_install resource("jupyter_core")
     venv.pip_install resource("traitlets")
-    venv.pip_install resource("tornado")
+    venv.pip_install resource("platformdirs")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The

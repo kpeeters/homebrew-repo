@@ -18,7 +18,7 @@ class Cadabra2Devel < Formula
   depends_on "boost"
   depends_on "pcre"
   depends_on "gmp"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
   depends_on "gtkmm3"
   depends_on "glibmm"
   depends_on "atkmm"
@@ -107,18 +107,18 @@ class Cadabra2Devel < Formula
     sha256 "b886d02a581b96704c9d1ffe55709e49b4d2d52709ccebc4be42db856e511278"
   end
 
-  resource "ipykernel" do
-    url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
-    sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
-  end
+#  resource "ipykernel" do
+#    url    "https://files.pythonhosted.org/packages/e9/5c/67594cb0c7055dc50814b21731c22a601101ea3b1b50a9a1b090e11f5d0f/ipykernel-6.29.5.tar.gz"
+#    sha256 "f093a22c4a40f8828f8e330a9c297cb93dcab13bd9678ded6de8e5cf81c56215"
+#  end
 
   
   def install
     # Configure cadabra.
-    system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPython_CDB_EXECUTABLE="+Formula["python@3.12"].opt_bin/"python3.12", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.12"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
+    system "cmake", "-DPython_EXECUTABLE="+Formula["python@3.13"].opt_bin/"python3.13", "-DPython_CDB_EXECUTABLE="+Formula["python@3.13"].opt_bin/"python3.13", "-DPYTHON_SITE_PATH="+prefix+"/"+Language::Python.site_packages("python3.13"), "-DHOMEBREW_ALLOW_FETCHCONTENT=ON", "-DENABLE_MATHEMATICA=OFF", ".", *std_cmake_args
     # Install the python dependencies using pip into a virtual env
     # created just for cadabra.
-    venv = virtualenv_create(libexec, Formula["python@3.12"].opt_bin/"python3.12")
+    venv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
     venv.pip_install resource("mpmath")
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
@@ -135,12 +135,12 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("pyparsing")
     venv.pip_install resource("cycler")
     venv.pip_install resource("matplotlib")
-    venv.pip_install resource("ipykernel")
+#    venv.pip_install resource("ipykernel")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
     # following magic achieves that...
-    site_packages = Language::Python.site_packages("python3.12")
+    site_packages = Language::Python.site_packages("python3.13")
     cdb = Formula["cadabra2-devel"].libexec
     (prefix/site_packages/"homebrew-cadabra2-devel.pth").write cdb/site_packages
     # Now build and install cadabra itself.

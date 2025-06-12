@@ -128,6 +128,16 @@ class Cadabra2Devel < Formula
     sha256 "9ed0579d3502c94b4b3732ac120375cda96f923114522847de4b3bb98b96b6b7"
   end
   
+  resource "jupyter_core" do
+    url    "https://files.pythonhosted.org/packages/99/1b/72906d554acfeb588332eaaa6f61577705e9ec752ddb486f302dafa292d9/jupyter_core-5.8.1.tar.gz"
+    sha256 "0a5f9706f70e64786b75acba995988915ebd4601c8a52e534a40b51c95f59941"
+  end
+
+  resource "tornado" do
+    url    "https://files.pythonhosted.org/packages/51/89/c72771c81d25d53fe33e3dca61c233b665b2780f21820ba6fd2c6793c12b/tornado-6.5.1.tar.gz"
+    sha256 "84ceece391e8eb9b2b95578db65e920d2a61070260594819589609ba9bc6308c"
+  end
+  
 
   def install
     # Configure cadabra.
@@ -156,7 +166,9 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("pyzmq")
     venv.pip_install resource("ipykernel")
     venv.pip_install resource("jupyter_client")
+    venv.pip_install resource("jupyter_core")
     venv.pip_install resource("traitlets")
+    venv.pip_install resource("tornado")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The

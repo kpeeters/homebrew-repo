@@ -143,7 +143,13 @@ class Cadabra2Devel < Formula
     sha256 "3d512d96e16bcb959a814c9f348431070822a6496326a4be0911c40b5a74c2bc"
   end
   
-
+  resource "IPython" do
+    url    "https://files.pythonhosted.org/packages/dc/09/4c7e06b96fbd203e06567b60fb41b06db606b6a82db6db7b2c85bb72a15c/ipython-9.3.0.tar.gz"
+    sha256 "79eb896f9f23f50ad16c3bc205f686f6e030ad246cc309c6279a242b14afe9d8"
+  end
+  
+  
+  
   def install
     # Configure cadabra.
     venv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
@@ -175,6 +181,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("traitlets")
     venv.pip_install resource("tornado")
     venv.pip_install resource("platformdirs")
+    venv.pip_install resource("IPython")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The

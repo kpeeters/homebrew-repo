@@ -123,6 +123,11 @@ class Cadabra2Devel < Formula
     sha256 "35b3a0947c4a6e9d589eb97d7d4cd5e90f910ee73101611f01283732bd6d9419"
   end
 
+  resource "traitlets" do
+    url    "https://files.pythonhosted.org/packages/eb/79/72064e6a701c2183016abbbfedaba506d81e30e232a68c9f0d6f6fcd1574/traitlets-5.14.3.tar.gz"
+    sha256 "9ed0579d3502c94b4b3732ac120375cda96f923114522847de4b3bb98b96b6b7"
+  end
+  
 
   def install
     # Configure cadabra.
@@ -151,6 +156,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("pyzmq")
     venv.pip_install resource("ipykernel")
     venv.pip_install resource("jupyter_client")
+    venv.pip_install resource("traitlets")
 
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The
@@ -180,8 +186,12 @@ class Cadabra2Devel < Formula
 
   def caveats
     <<~EOS
+
+
       To make the Cadabra2 kernel available to Jupyter, run:
-        jupyter kernelspec install #{prefix}/share/jupyter/cadabra2 --user --name cadabra2
+        jupyter kernelspec install #{prefix}/share/jupyter/kernels/cadabra2 --user --name cadabra2
+
+
     EOS
   end
 

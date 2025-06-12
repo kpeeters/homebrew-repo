@@ -156,15 +156,16 @@ class Cadabra2Devel < Formula
     # location where it looks.
     if Formula["jupyterlab"].any_version_installed?
       jupyter_path = Formula["jupyterlab"].opt_libexec/"share/jupyter/kernels"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/cadabra2/kernel.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/cadabra2/logo-64x64.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/cadabra2/logo-32x32.json"      
+      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/kernel.json"
+      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-64x64.json"
+      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-32x32.json"      
     end
   
     if Formula["jupyter"].any_version_installed?
       jupyter_path = Formula["jupyter"].opt_libexec/"share/jupyter/kernels"  
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/cadabra2/logo-64x64.json"
-      (jupyter_path/"cadabra2").install prefix/"share/jupyter/cadabra2/logo-32x32.json"      
+      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/kernel.json"
+      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-64x64.json"
+      (jupyter_path/"cadabra2").install prefix/"share/jupyter/kernels/cadabra2/logo-32x32.json"      
     end
   end
 

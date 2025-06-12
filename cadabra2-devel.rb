@@ -173,6 +173,7 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("jupyter_client")
     venv.pip_install resource("jupyter_core")
     venv.pip_install resource("traitlets")
+    venv.pip_install resource("tornado")
     venv.pip_install resource("platformdirs")
 
     # We need to put the directory in which we just installed sympy

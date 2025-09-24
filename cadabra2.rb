@@ -6,8 +6,8 @@ class Cadabra2 < Formula
   
   desc "A field-theory motivated approach to computer algebra."
   homepage "https://cadabra.science/"
-  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.5.14.tar.gz"
-  sha256 "9e85977f49dae20230f4865a4f879d819cbfaaf3797d22adef1407990eab66ff"
+  url "https://github.com/kpeeters/cadabra2/archive/refs/tags/2.5.14-p1.tar.gz"
+  sha256 "1dc907299af9adab7d34b346b81f071e09b42358d6680467736bc7dfd5581eb8"
   conflicts_with "cadabra2-devel", because: "You can only install the normal or the devel version, not both."
   version "2.5.14"
   

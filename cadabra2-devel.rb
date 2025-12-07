@@ -6,10 +6,10 @@ class Cadabra2Devel < Formula
   
   desc "A field-theory motivated approach to computer algebra (current development branch)."
   homepage "https://cadabra.science/"
-  url "https://github.com/kpeeters/cadabra2/archive/baa6aa26ec037722c4b2a5fb9732f23a7e80af38.tar.gz"
-  sha256 "9f165170b7e4dbcd347333835c45c2a091eff23024ae6e7c3f833cfae7ad9844"
+  url "https://github.com/kpeeters/cadabra2/archive/30e27553722af135101dda2a607c59f878a95390.tar.gz"
+  sha256 "59b9eda2ee6d293cc0a68ed34042a1f2f7c3b412e0c457cc1768ea5c3cdfaac8"
   conflicts_with "cadabra2", because: "You can only install the normal or the devel version, not both."
-  version "2.5.15.baa6aa26ec037722c4b2a5fb9732f23a7e80af38"
+  version "2.5.15.30e27553722af135101dda2a607c59f878a95390"
   
   depends_on "cmake" => :build
   depends_on "pkgconfig" => :build

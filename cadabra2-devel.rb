@@ -260,22 +260,22 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("sympy")
     venv.pip_install resource("gmpy2")
 
-   # Matplotlib and dependencies.
+    # Matplotlib and dependencies (each after its own dependencies).
     venv.pip_install resource("six")
     venv.pip_install resource("packaging")
     venv.pip_install resource("python-dateutil")
     venv.pip_install resource("pillow")
     venv.pip_install resource("fonttools")
+    venv.pip_install resource("numpy")
     venv.pip_install resource("contourpy")
     venv.pip_install resource("kiwisolver")
-    venv.pip_install resource("numpy")
     venv.pip_install resource("pyparsing")
     venv.pip_install resource("cycler")
     venv.pip_install resource("matplotlib")
 
     # All below is to get the jupyter kernel to work. This should
-    # probably move into a separate package.
-
+    # probably move into a separate package. Installed in dependency
+    # order, since each pip_install runs without dependency resolution.
     venv.pip_install resource("pyzmq")
     venv.pip_install resource("appnope")
     venv.pip_install resource("asttokens")
@@ -283,27 +283,27 @@ class Cadabra2Devel < Formula
     venv.pip_install resource("debugpy")
     venv.pip_install resource("decorator")
     venv.pip_install resource("executing")
-    venv.pip_install resource("ipykernel")
-    venv.pip_install resource("ipython")
+    venv.pip_install resource("Pygments")
     venv.pip_install resource("ipython_pygments_lexers")
-    venv.pip_install resource("jedi")
-    venv.pip_install resource("jupyter_client")
-    venv.pip_install resource("jupyter_core")
-    venv.pip_install resource("matplotlib-inline")
-    venv.pip_install resource("nest-asyncio2")
     venv.pip_install resource("parso")
+    venv.pip_install resource("jedi")
+    venv.pip_install resource("traitlets")
+    venv.pip_install resource("matplotlib-inline")
+    venv.pip_install resource("ptyprocess")
     venv.pip_install resource("pexpect")
-    venv.pip_install resource("platformdirs")
+    venv.pip_install resource("wcwidth")
     venv.pip_install resource("prompt_toolkit")
     venv.pip_install resource("psutil")
-    venv.pip_install resource("ptyprocess")
     venv.pip_install resource("pure_eval")
-    venv.pip_install resource("Pygments")
     venv.pip_install resource("stack-data")
+    venv.pip_install resource("ipython")
+    venv.pip_install resource("platformdirs")
+    venv.pip_install resource("jupyter_core")
     venv.pip_install resource("tornado")
-    venv.pip_install resource("traitlets")
     venv.pip_install resource("typing-extensions")
-    venv.pip_install resource("wcwidth")
+    venv.pip_install resource("jupyter_client")
+    venv.pip_install resource("nest-asyncio2")
+    venv.pip_install resource("ipykernel")
     
     # We need to put the directory in which we just installed sympy
     # and matplotlib into the python site.path seen by cadabra. The

@@ -4,8 +4,8 @@
 class GaindriveServer < Formula
   desc "Music and video streaming server with a Subsonic-compatible API"
   homepage "https://github.com/kpeeters/gaindrive"
-  url "https://github.com/kpeeters/gaindrive/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "75c750a499e2487935e9d68e07bb5afa3933340b2ee56a9f54c41eb281455d1e"
+  url "https://github.com/kpeeters/gaindrive/archive/refs/tags/v1.1.1.tar.gz"
+  sha256 "7ee6e9564c00598fc3e66be01efb736347fa8a3f65f888f6d761329f05aa1584"
   license "GPL-3.0-or-later"
   head "https://github.com/kpeeters/gaindrive.git", branch: "master"
 
